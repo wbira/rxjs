@@ -14,3 +14,20 @@ var multipleValues = Rx.Observable.create(function (observer) {
 })
 
 multipleValues.subscribe(console.log)
+
+//ex 3
+
+var completedObservable = Rx.Observable.create(function (observer) {
+  observer.next(42);
+  observer.complete();
+  observer.next('Should not emit this');
+})
+
+completedObservable.subscribe(console.log);
+
+var errorObservable = Rx.Observable.create(function (observer) {
+  observer.next('Starting http request');
+  setTimeout(() => observer.error('whoops'), 1000);
+});
+
+errorObservable.subscribe(console.log, console.error)

@@ -31,3 +31,9 @@ var errorObservable = Rx.Observable.create(function (observer) {
 });
 
 errorObservable.subscribe(console.log, console.error)
+
+//ex 4
+
+//of operator emit values and then completes
+var obs1 = Rx.Observable.of(42,100,200);
+obs1.subscribe(console.log)
